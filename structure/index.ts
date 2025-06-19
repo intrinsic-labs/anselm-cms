@@ -111,43 +111,4 @@ export default (S: StructureBuilder) =>
             .defaultOrdering([{field: 'title', direction: 'asc'}])
         )
         .icon(() => '💭'),
-      
-      S.divider(),
-      
-      // Blog
-      S.listItem()
-        .title('Blog')
-        .child(
-          S.list()
-            .title('Blog')
-            .items([
-              S.listItem()
-                .title('Posts')
-                .child(
-                  S.documentList()
-                    .title('Blog Posts')
-                    .filter('_type == "blogPost"')
-                    .defaultOrdering([{field: 'publishedAt', direction: 'desc'}])
-                )
-                .icon(() => '📝'),
-              S.listItem()
-                .title('Categories')
-                .child(
-                  S.documentList()
-                    .title('Categories')
-                    .filter('_type == "blogCategory"')
-                )
-                .icon(() => '🏷️'),
-              S.listItem()
-                .title('Featured Posts')
-                .child(
-                  S.documentList()
-                    .title('Featured Posts')
-                    .filter('_type == "blogPost" && featured == true')
-                    .defaultOrdering([{field: 'publishedAt', direction: 'desc'}])
-                )
-                .icon(() => '⭐')
-            ])
-        )
-        .icon(() => '📚')
-    ]) 
+  ])

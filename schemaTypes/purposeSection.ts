@@ -38,12 +38,8 @@ export default defineType({
     {
       name: 'highlightQuote',
       title: 'Highlight Quote',
-      type: 'object',
-      fields: [
-        {name: 'text', title: 'Quote Text', type: 'text'},
-        {name: 'author', title: 'Author', type: 'string'},
-        {name: 'source', title: 'Source', type: 'string'}
-      ]
+      type: 'reference',
+      to: [{type: 'quotes'}]
     },
     {
       name: 'backgroundImage',

@@ -85,6 +85,10 @@ export default defineType({
       name: 'motto',
       title: 'Motto',
       type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: false
+      },
       fields: [
         {name: 'primary', title: 'Primary Text', type: 'string'},
         {name: 'sub', title: 'Sub Text', type: 'string'},

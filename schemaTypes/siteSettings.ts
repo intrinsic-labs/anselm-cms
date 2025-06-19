@@ -21,12 +21,6 @@ export default defineType({
       initialValue: 'A Classical Christian school opening in Charlotte, NC in 2026. Our aim is to train the hearts and minds of students to be lovers of wisdom, knowledge, and virtue.'
     },
     {
-      name: 'url',
-      title: 'Site URL',
-      type: 'url',
-      validation: (Rule) => Rule.required()
-    },
-    {
       name: 'logo',
       title: 'Site Logo',
       type: 'image',
@@ -63,6 +57,11 @@ export default defineType({
       name: 'address',
       title: 'School Address',
       type: 'object',
+      options: {
+        columns: 2,
+        collapsible: true,
+        collapsed: true
+      },
       fields: [
         {name: 'streetAddress', title: 'Street Address', type: 'string'},
         {name: 'addressLocality', title: 'City', type: 'string', initialValue: 'Charlotte'},
@@ -75,6 +74,11 @@ export default defineType({
       name: 'contactInfo',
       title: 'Contact Information',
       type: 'object',
+      options: {
+        columns: 2,
+        collapsible: true,
+        collapsed: true
+      },
       fields: [
         {name: 'phone', title: 'Phone', type: 'string'},
         {name: 'email', title: 'Email', type: 'email'},
@@ -100,6 +104,11 @@ export default defineType({
       name: 'seoSettings',
       title: 'SEO Settings',
       type: 'object',
+      options: {
+        columns: 2,
+        collapsible: true,
+        collapsed: true
+      },
       fields: [
         {name: 'metaTitle', title: 'Meta Title', type: 'string'},
         {name: 'metaDescription', title: 'Meta Description', type: 'text', rows: 2},

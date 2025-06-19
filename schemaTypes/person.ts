@@ -32,56 +32,78 @@ export default defineType({
       type: 'string'
     },
     {
-      name: 'bio',
-      title: 'Biography',
-      type: 'array',
-      of: [
-        {
-          type: 'block'
-        }
-      ]
-    },
-    {
-      name: 'shortBio',
-      title: 'Short Bio',
-      type: 'text',
-      rows: 3
-    },
-    {
-      name: 'photo',
-      title: 'Photo',
-      type: 'image',
+      name: 'about',
+      title: 'About',
+      type: 'object',
       options: {
-        hotspot: true
+        collapsible: true,
+        collapsed: true
       },
       fields: [
         {
-          name: 'alt',
-          title: 'Alt text',
-          type: 'string'
+          name: 'bio',
+          title: 'Biography',
+          type: 'array',
+          of: [
+            {
+              type: 'block'
+            }
+          ]
+        },
+        {
+          name: 'shortBio',
+          title: 'Short Bio',
+          type: 'text',
+          rows: 3
+        },
+        {
+          name: 'photo',
+          title: 'Photo',
+          type: 'image',
+          options: {
+            hotspot: true
+          },
+          fields: [
+            {
+              name: 'alt',
+              title: 'Alt text',
+              type: 'string'
+            }
+          ]
         }
       ]
     },
     {
-      name: 'email',
-      title: 'Email',
-      type: 'email'
-    },
-    {
-      name: 'phone',
-      title: 'Phone',
-      type: 'string'
-    },
-    {
-      name: 'socialLinks',
-      title: 'Social Links',
-      type: 'array',
-      of: [
+      name: 'contactInfo',
+      title: 'Contact Information',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true
+      },
+      fields: [
         {
-          type: 'object',
-          fields: [
-            {name: 'platform', title: 'Platform', type: 'string'},
-            {name: 'url', title: 'URL', type: 'url'}
+          name: 'email',
+          title: 'Email',
+          type: 'email'
+        },
+        {
+          name: 'phone',
+          title: 'Phone',
+          type: 'string'
+        },
+        {
+          name: 'socialLinks',
+          title: 'Social Links',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                {name: 'platform', title: 'Platform', type: 'string'},
+                {name: 'url', title: 'URL', type: 'url'}
+              ]
+            }
           ]
         }
       ]
@@ -112,13 +134,21 @@ export default defineType({
 
           const client = context.getClient({apiVersion: '2023-05-03'})
           const currentDocId = context.document?._id
+          
+          if (!currentDocId) return true
 
+          // Get the base ID without drafts prefix for comparison
+          const baseDocId = currentDocId.replace('drafts.', '')
+          
           // Query for other documents with the same order value and board type
-          const query = `*[_type == "person" && order == $order && boardType == $boardType && _id != $currentDocId]{name, _id}`
+          // Exclude both the current document ID and its draft/published counterpart
+          const query = `*[_type == "person" && order == $order && boardType == $boardType && !(_id in [$currentDocId, $baseDocId, $draftDocId])]{name, _id}`
           const duplicates = await client.fetch(query, {
             order,
             boardType: context.document?.boardType,
-            currentDocId: currentDocId?.replace('drafts.', '')
+            currentDocId,
+            baseDocId,
+            draftDocId: `drafts.${baseDocId}`
           })
 
           if (duplicates.length > 0) {
@@ -154,6 +184,10 @@ export default defineType({
       name: 'seo',
       title: 'SEO',
       type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true
+      },
       fields: [
         {name: 'metaTitle', title: 'Meta Title', type: 'string'},
         {name: 'metaDescription', title: 'Meta Description', type: 'text'}
@@ -170,7 +204,7 @@ export default defineType({
     },
     prepare({title, subtitle, media, boardType, order}: {title: string, subtitle: string, media: any, boardType: string, order: number}) {
       return {
-        title: `${order ? order + '. ' : ''}${title}`,
+        title: `${title}`,
         subtitle: `${subtitle} (${boardType})`,
         media
       }

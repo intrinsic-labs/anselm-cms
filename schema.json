@@ -921,7 +921,14 @@
           "type": "string"
         }
       },
-      "title": {
+      "titleP1": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "titleP2": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
@@ -1163,6 +1170,13 @@
                       "value": {
                         "type": "inline",
                         "name": "sanity.imageCrop"
+                      },
+                      "optional": true
+                    },
+                    "alt": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
                       },
                       "optional": true
                     },

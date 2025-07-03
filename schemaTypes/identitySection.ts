@@ -6,10 +6,16 @@ export default defineType({
   type: 'document',
   fields: [
     {
-      name: 'title',
+      name: 'titleP1',
       title: 'Section Title',
       type: 'string',
-      initialValue: 'Our Identity'
+      initialValue: 'Our'
+    },
+    {
+      name: 'titleP2',
+      title: 'Section Title P2',
+      type: 'string',
+      initialValue: 'Identity'
     },
     {
       name: 'distinctives',
@@ -54,7 +60,15 @@ export default defineType({
               type: 'image',
               options: {
                 hotspot: true
-              }
+              },
+              fields: [
+                {
+                  name: 'alt',
+                  title: 'Alternative Text',
+                  type: 'string',
+                  description: 'Important for accessibility and SEO'
+                }
+              ]
             }
           ],
           preview: {

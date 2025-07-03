@@ -76,6 +76,12 @@ export default defineType({
       type: 'boolean',
       initialValue: false
     },
+    {
+      name: 'showInCarousel',
+      title: 'Show in Carousel',
+      type: 'boolean',
+      initialValue: false
+    }
   ],
   preview: {
     select: {

@@ -83,6 +83,7 @@ export default defineType({
       fields: [
         {name: 'primary', title: 'Primary Text', type: 'string'},
         {name: 'sub', title: 'Sub Text', type: 'string'},
+        {name: 'showInCarousel', title: 'Show in Carousel', type: 'boolean', initialValue: false},
         {name: 'mottoExplanation', title: 'Motto Explanation', type: 'array', of: [{type: 'block'}]}
       ]
     },

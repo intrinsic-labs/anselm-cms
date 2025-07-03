@@ -1219,6 +1219,13 @@
               },
               "optional": true
             },
+            "showInCarousel": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "boolean"
+              },
+              "optional": true
+            },
             "mottoExplanation": {
               "type": "objectAttribute",
               "value": {
@@ -1936,6 +1943,13 @@
         "optional": true
       },
       "featured": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
+      },
+      "showInCarousel": {
         "type": "objectAttribute",
         "value": {
           "type": "boolean"

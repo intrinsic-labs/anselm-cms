@@ -41,21 +41,19 @@ export default defineType({
           name: 'alt',
           title: 'Alt text',
           type: 'string'
-        }
-      ]
-    },
-    {
-      name: 'backgroundImage',
-      title: 'Background Image',
-      type: 'image',
-      options: {
-        hotspot: true
-      },
-      fields: [
+        },
         {
-          name: 'alt',
-          title: 'Alt text',
-          type: 'string'
+          name: 'position',
+          title: 'Position',
+          type: 'string',
+          options: {
+            list: [
+              {title: 'Left', value: 'left'},
+              {title: 'Center', value: 'center'},
+              {title: 'Right', value: 'right'}
+            ]
+          },
+          initialValue: 'center'
         }
       ]
     },

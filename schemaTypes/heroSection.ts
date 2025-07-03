@@ -7,7 +7,8 @@ export default defineType({
   fields: [
     {
       name: 'headline',
-      title: 'Main Headline',
+      title: 'Headline',
+      description: 'Displayed beneath the logo in the hero section',
       type: 'string',
       validation: (Rule) => Rule.required(),
       initialValue: 'THE ANSELM SCHOOL'
@@ -15,6 +16,7 @@ export default defineType({
     {
       name: 'subheadline',
       title: 'Subheadline',
+      description: 'Displayed beneath the main headline in the hero section (optional)',
       type: 'string',
       initialValue: 'Opening Fall 2026'
     },
@@ -53,8 +55,23 @@ export default defineType({
       ]
     },
     {
-      name: 'logo',
-      title: 'Hero Logo',
+      name: 'logomark',
+      title: 'Logomark',
+      type: 'image',
+      options: {
+        hotspot: true
+      },
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alt text',
+          type: 'string'
+        }
+      ]
+    },
+    {
+      name: 'logotype',
+      title: 'Logotype',
       type: 'image',
       options: {
         hotspot: true

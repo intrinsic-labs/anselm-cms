@@ -6,10 +6,16 @@ export default defineType({
   type: 'document',
   fields: [
     {
-      name: 'title',
-      title: 'Section Title',
+      name: 'titleP1',
+      title: 'Section Title P1',
       type: 'string',
-      initialValue: 'Our Purpose'
+      initialValue: 'Our'
+    },
+    {
+      name: 'titleP2',
+      title: 'Section Title P2',
+      type: 'string',
+      initialValue: 'Purpose'
     },
     {
       name: 'content',
@@ -22,6 +28,9 @@ export default defineType({
             {title: 'Normal', value: 'normal'},
             {title: 'H2', value: 'h2'},
             {title: 'H3', value: 'h3'},
+            {title: 'H4', value: 'h4'},
+            {title: 'H5', value: 'h5'},
+            {title: 'H6', value: 'h6'},
             {title: 'Quote', value: 'blockquote'}
           ],
           marks: {

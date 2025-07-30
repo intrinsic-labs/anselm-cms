@@ -54,7 +54,15 @@ export default (S: StructureBuilder) =>
                     .schemaType('anselmSection')
                     .documentId('anselmSection')
                 )
-                .icon(() => '⛪')
+                .icon(() => '⛪'),
+              S.listItem()
+                .title('Lasting Section')
+                .child(
+                  S.document()
+                    .schemaType('lastingSection')
+                    .documentId('lastingSection')
+                )
+                .icon(() => '⏳')
             ])
         )
         .icon(() => '📄'),

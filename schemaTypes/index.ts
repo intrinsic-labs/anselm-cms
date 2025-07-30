@@ -2,6 +2,7 @@ import siteSettings from './siteSettings'
 import heroSection from './heroSection'
 import purposeSection from './purposeSection'
 import identitySection from './identitySection'
+import lastingSection from './lastingSection'
 import anselmSection from './anselmSection'
 import person from './person'
 import quotes from './quotes'
@@ -15,7 +16,7 @@ export const schemaTypes = [
   purposeSection,
   identitySection,
   anselmSection,
-  
+  lastingSection,
   // People
   person,
   

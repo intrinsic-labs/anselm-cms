@@ -68,6 +68,18 @@ export default (S: StructureBuilder) =>
         .icon(() => '📄'),
       
       S.divider(),
+
+      // Giving Section
+      S.listItem()
+        .title('Giving Section')
+        .child(
+          S.document()
+            .schemaType('givingSection')
+            .documentId('givingSection')
+        )
+        .icon(() => '$$'),
+
+      S.divider(),
       
       // People
       S.listItem()
